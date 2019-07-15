@@ -9,129 +9,123 @@ The goal of this project is to combine everything you have learned about data wr
 
 **You will be working individually for this project**, but we'll be guiding you along the process and helping you as you go. Show us what you've got!
 
----
 
-## Technical Requirements
+## Sommaire
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features : les différentes étapes](#features)
+* [Status](#status)
 
-## Je commencepar importer les librairies dont j'aurais besoin pour la suite du travail
-## Importation du fichier
 
-## Lecture des infos
+## Technologies
+* Python3
+
+## Setup
+Dans ce travail de cleaning, j'ai importé les librairies suivantes
+
+    `import pandas as pd`
+    `import numpy as np`
+    `import re`
+
+## Features : les différentes étapes
+
+### Importation du fichier
+    `pd.read_csv('GSAF5.csv', sep=',',engine='python', encoding='latin1')`
+### Lecture des infos
 
 Je commence par lire les infos macro du fichier
+df.shape
+df.info()
 
-## Inspection des colonnes
-je fais une premiere inspection "grossière" et peu lisible des colonnes
+### Inspection des colonnes
+J'analyse les colonnes et effectue les modifications nécessaires. Par exemple :
+    En voulant travailler sur la colonne "Sex", ça indiquait "undefined" --> il y a un problème de syntaxe. il faut donc renommer la colonne pour supprimer l'espace en trop.<br>
+    Pareil pour la colonne "Species".
+    
+### Travail sur la colonne 'SEX'
 
-## les premiers points de cleaning à faire:
-1.passer les données en dataframe<br>
-2.inspecter les données<br>
-3.renommer les colonnes pour une meilleures lecture<br>
-4.1 renomer la colonne "Sex " en supprimant l'espace --> OK<br>
-5.donner le bon type aux données (int, float, date, string, boolean)<br>
-6.on peut fusionner dans la colonne Type les données "boat" et "boating" -->OK<br>
-7.dans la colonne Country : mettre tous les pays en Majuscule, corriger le nom "ST. MAARTIN" en "ST. MARTIN",<br> 
-   supprimer la ligne "Between PORTUGAL & INDIA" et trouver d'autres info du genre--> OK<br>
-8.on peut supprimer les carctères spéciaux (les accents)<br>
-9.pour la colonne 'Sex', regarger pourquoi il y a 2 M, pour les 3 autres on les remplace par du non défini. --> OK<br>
-10.pour les ages, on peut créér une colonne qui sont des tranches d'age<br>
-11.pour 'Fatal', nettoyer les différents 'N' ajouter ce qui n'est pas connus par 'UNKNOWN' et 'F' par 'Y'-->OK<br>
-12.supprimer une des colonnes "href" car doublon. Si espace dans l'url ajouter un '-'<br>
-13.supprimer les doublons en dernier quand le fichier sera la plus clean à mon goût<br>
+pour la colonne 'SEX', je corrige pour conserver 3 infos : M, F ou UNKNOWN<br/>
+Remarques = 
+    *possibilité de faire un dico pour y mettre mes modif désirées
+    *Remplacer les espaces par un '_'
 
-## point de vigilance
-En voulant travailler sur la colonne "Sex", ça indiquait "undefined" --> il y a un problème de syntaxe. il faut donc renommer la colonne pour supprimer l'espace en trop.<br>
-pareil pour la colonne "Species"
-
-## Travail sur la colonne 'Sex'
-
-pour la colonne 'Sex', je corrige pour conserver 3 infos : M, F ou UNKNOWN<br/>
-Remarque = possibilité de faire un dico pour y mettre mes modif désirées
-
-## Travail sur la colonne 'Fatal (Y/N)'
+### Travail sur la colonne 'FATAL (Y/N)'
 
 Je choisis de ne garder que 3 infos pour la colonne 'Fatal (Y/N)'<br/>
-pour cela je nettois les elements plus haut
 
-## Travail sur les colonnes 'Year' et 'Date'
-Je commence par regarder coment se présentent les 2 colonnes avec value_counts()
+### Travail sur les colonnes 'YEAR' et 'DATE'
+1)Je commence par regarder comment se présentent les 2 colonnes avec la fonction `value_counts()`
 
-il y a 124 annees avec 0 pour infos et 1 champs avec la valeur 5 et 1 autre avec la valeur 77<br/>
-
-Dans la colonne 'Date', je constate qu'il y a des cellules qui n'ont pas le format date et qui commencent par un "string". 
 Je fais 2 travaux en parallèle : <br/>
-1) Je cherche les lignes avec les champs 0 dans la colonne 'Year' et pour les renseigner (si nécessaire) en me servant de la colonne Date<br/>
-2) je choisis de remplacer ce qui n'est pas en format date par l'info "No date"<br/>
-Pour cela, je crée une df temporaire où je split en 3 colonnes les infos de la colonne 'Date' et je renomme les colonnes en 'jour', 'mois','Annee'<br/>
-Je concatene ce nouveau tableau avec la colonne 'Year' de la df d'origine<br/>
+    a) Je cherche les lignes avec les champs 0 dans la colonne 'YEAR' et, pour les renseigner (si nécessaire), je me sers de la colonne DATE<br/>
+    b) je choisis de remplacer ce qui n'est pas en format date par l'info "No date"<br/>
+    Pour cela, j'ai créé une df temporaire où je split en 3 colonnes les infos de la colonne 'DATE' et je renomme les colonnes en 'Jour', 'Mois','Annee'<br/>
+    Je concatene ce nouveau tableau avec la colonne 'YEAR' de la df d'origine<br/>
 
-J'identifie les lignes où Year = 0 et où Jour n'est pas un nombre
+A)J'identifie les lignes où YEAR = 0 et où 'Jour' n'est pas un nombre
 
-Je créé une liste des index pour ensuite remplacer les données qui ne sont pas des dates 
+    1)Je créé une liste des index pour ensuite remplacer les données qui ne sont pas des dates 
 
-Je choisi d'ajouter une colonne nommée 'Date_clean', pour conserver les dates nettoyées.<br/>
-    Si j'ai une date je conserve la date<br/>
-    Sinon je mets "No date" pour la liste d'index identifiés plus haut
-    
-Dans la df temporaire 'result', j'ai aussi vu des info sous le format 1845-1853<br/>
-Pour ces formats, je change aussi les cellules de la colonne 'Date_clean' par "No date"
+    2)Je choisi d'ajouter une colonne nommée 'Date_clean', pour conserver les dates nettoyées.<br/>
+        Si j'ai une date je conserve la date<br/>
+        Sinon je mets "No date"<br/>
 
-Je regarde maintenant s'il y a d'autres modifications à réaliser
+    3)Pour les formats de type 1845-1853, je change aussi les cellules de la colonne 'DATE_CLEAN' par "No date"
+
+    4) Je regarde s'il y a d'autres modifications à réaliser
 
 Pour toutes ces modifications, je n'ai pas eu besoin de toucher à la colonne 'Year'<br/>
-Je prends maintenant les cas où la colonne 'Year' est renseignée 
 
-Je supprime le mot 'Reported' des cellules pour ne conserver que la date
+B)Je prends maintenant les cas où la colonne 'Year' est renseignée 
 
-En faisant un value_counts sur la colonne Date_clean, j'ai repéré quelques points à modifier<br/>
-#rl2 mettre no date =[5950,5951,5865,5866,5867,4088,5341,5357,5670,1868]
-#mettre 'Year' à 0 et 'Date_clean' à No date=[5865,5866,5867]
-#retirer le point et la lettre à la fin = [1133,1134,2990]
-#réécrire les dates pour = [5776,5794,3883]
+    1)Je supprime le mot 'Reported' des cellules pour ne conserver que la date
 
-Je décide de mettre 'No date' pour les dates au format 1xxxs
+    2)Je décide de mettre 'No date' pour les dates au format 1xxxs
 
-J'applique les dernières modifications
+C)J'applique les dernières modifications
 
-## Travail sur la colonne "Type"
+### Travail sur la colonne "TYPE"
 pour la colonne 'Type', je fusionne Boat et Boating
 
-## Travail sur la colonne 'Country'
-    #mettre tous les pays en Majuscule,<br/> 
-    corriger le nom "ST. MAARTIN" en "ST. MARTIN",<br/>
-    #remplacer les NaN par "NC"<br/>
-    #passer en "NC" les lignes "Between PORTUGAL & INDIA" ou avec un "?" ou avec "/"<br/>
-    #supprimer les espaces avant un mot<br/>
+### Travail sur la colonne 'COUNTRY'
+*mettre tous les pays en Majuscule,<br/> 
+*corriger les orthographes<br/>
+*remplacer les NaN par "NC"<br/>
+*supprimer les espaces en début de chaîne de caractères<br/>
     
-## Vérificaton des infos dans les colonnes 'Unnamed: 22' & 'Unnamed: 23'
+### Vérificaton des infos dans les colonnes 'UNNAMED: 22' & 'UNNAMED: 23'
 
 Comme il n'y a pas d'infos exploitables/nécessaires, je les supprime
 
-## Travail sur la colonne "pdf"
-    Je remplace 'pf' par 'pdf'
+### Travail sur la colonne "PDF"
+Je remplace 'pf' par 'pdf'
     
-## Travail sur la colonne "href"
+### Travail sur la colonne "HREF"
 Identification des NaN et remplacement des NaN par NC (Non Communiqué) car il est difficile après de faire des 'replace'
 
-## Suppression de la colonne "href formula" 
-car identique à la colonne "href"
+### Suppression de la colonne "HREF FORMULA" 
+car identique à la colonne "HREF"
 
-## Travail sur la colonne "Time"
-    remplacer les NaN
+### Travail sur la colonne "TIME"
+Je remplace les NaN par 'NC'
     
 Je change la syntaxe des élements ayant une heure correcte mais mal écrite pour la suite du nettoyage.<br/>
 En effet, avec ce format de date je vais pouvoir remplir la colonne "AM_PM" créée et ensuite les changer en AM, PM ou NC.
 
-Creation d'un nouvelle colonne "AM_PM" pour y reseigner les infos suivantes : le matin-AM de l'apres-midi-PM si pas possible ou vide alors NC
+Creation d'un nouvelle colonne "AM_PM" pour y renseigner les infos suivantes, suivant le format : 
+*AM pour le matin
+*Pm pour l'apres-midi-PM 
+*NC si pas possible à renseigner ou vide
 
-Retour au travail sur la colonne "AM_PM"<br/>
-    Je remplace toutes les heures en info AM ou PM suivant le format
     
-En checkant les valeurs uniques, on constate qu'il y a une info qui devrait renseigner la colonne "Fatal (Y/N)"<br/>
-    Je cherche donc l'index 
-    
-    je cherche ensuite si la colonne suivante n'a pas l'info
-        #pour cela, j'ai réduit le tableau pour vérifier s'il n'y a pas de décalage 
-    #mais en fait c'est ok. Donc je ne corrige que la colonne "Fatal" pour cet index
-    
-# Exportation d'un fichier csv propre
+### Exportation d'un fichier csv propre
+
+`df.to_csv('shark_cleaning.csv', sep=',', index=False)`
+
+To-do list:
+* Passer les colonnes DATE-CLEAN et TIME au format Datetime64 
+* s'occuper des colonnes restantes
+
+## Status
+Le Projet est: _fini sur les colonnes choisies_
+
