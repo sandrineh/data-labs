@@ -1,0 +1,10 @@
+## Challenge 1
+Question 5 : on ne peut pas dire que c'est un avantage de jouer "à la maison" puisqu'on perd cet avantage en jouant à "l'extérieur"
+
+Question 7 : l'équipe qui a le meilleur taux de réussite est Minnesota Vikings
+
+https://public.tableau.com/profile/sandrine.henry#!/vizhome/NFLTeamPerformanceDashboard_15696807412010/Tableaudebord1
+
+Bonus : 
+https://public.tableau.com/profile/sandrine.henry#!/vizhome/Countriesoftheworld_15696828767140/Tableaudebord1?publish=yes
+
