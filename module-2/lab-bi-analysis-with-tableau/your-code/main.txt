@@ -1,0 +1,10 @@
+Q4. 
+- on voit que les personnes qui ont choisi le paiement en ligne choisissent un abonement mois-par-mois plutôt qu'un abonnement pour un ou deux ans.
+- le contrat pour un an est celui qui est le moins plébiscité.
+- les abonnés qui ont choisi le paiement par transfert bancaire prennent quasi indifférement un contrat mois-par-mois qu'un abonnement pour 2 ans. De même que ceux qui payent par carte de crédit.
+
+Q6.4
+- à la lecture du graphique, on voit que les Senior paient plus les que les autres clients, et ce de façon significative, depuis le début de leur abonnement. La différence de charge reste la même quelque soit la longévité de l'abonnement. 
+
+https://public.tableau.com/profile/sandrine.henry#!/vizhome/LabBIAnalysiswithTableau_15696866925060/Histoire1
+
