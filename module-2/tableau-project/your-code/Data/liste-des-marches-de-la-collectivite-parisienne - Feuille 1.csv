@@ -1,0 +1,21 @@
+"Le jeu de données représente la liste des marchés supérieurs à 20 000 € passés par la collectivité parisienne. Cette liste précise l’objet du marché, le nom du titulaire, le montant du marché sur sa durée complète, sa durée, le budget de rattachement, l’article du Code des marchés publics relatif au mode de mise en concurrence, la nature de l’achat concerné.",
+,
+Nom de la colonne,Description
+Année de notification,Année de notification du marché
+N° Marché,Numéro national de recensement du marché
+Objet du marché,Objet du marché
+Nature du marché,"Fournitures, Travaux ou Services"
+Fournisseur - Nom,Nom du titulaire du marché
+Fournisseur - Siret,Identifiant national de l’entreprise –niveau établissement
+Fournisseur - Code Postal,Code postal de l’entreprise
+Fournisseur - Ville,Commune où est localisée l’entreprise
+Montant min (HT),"Montant minimum du marché (en cas de marché comportant des montants mini et maxi ). En cas de marché à montant forfaitaire, les montants mini et maxi sont identiques. Ces montants sont ceux sur la durée complète du marché"
+Montant max (HT),"Montant maximum du marché (en cas de marché comportant des montants mini et maxi ). En cas de marché à montant forfaitaire, les montants mini et maxi sont identiques. Ces montants sont ceux sur la durée complète du marché"
+Date de notification,Date à laquelle le marché a été notifié à l’entreprise
+Date de début,Date de début effectif de l’exécution du marché
+Date de fin,Date de fin de l’exécution du marché
+Durée du marché (en jours),Durée du marché
+Périmètre financier,"Budget de rattachement du marché : Ville de paris, Département de Paris, Budgets annexes (Eau, Assainissement, Aide Sociale à l’Enfance, Transports Automobiles municipaux)"
+Article CMP,Article du Code des Marchés Publics visé pour le choix du mode de mise en concurrence
+Catégorie d’achat - clé,Identifiant de la nature d’achat issu de la nomenclature achat de la collectivité parisienne qui sert de base à la définition des besoins et à la computation des seuils de mise en concurrence ( article 27 du CMP)
+Catégorie d’achat - texte,
