@@ -1,3 +1,5 @@
+https://public.tableau.com/profile/sandrine.henry#!/vizhome/marchspublics/Histoire1?publish=yes
+
 Choix du dataset : 
 
 "Le jeu de données représente la liste des marchés supérieurs à 20 000 € passés par la collectivité parisienne. Cette liste précise l’objet du marché, le nom du titulaire, le montant du marché sur sa durée complète, sa durée, le budget de rattachement, l’article du Code des marchés publics relatif au mode de mise en concurrence, la nature de l’achat concerné."
