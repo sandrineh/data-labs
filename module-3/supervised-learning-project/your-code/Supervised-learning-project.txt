@@ -1,28 +1,21 @@
+#Supervised learning project : 
+## Construction et évaluation d’un modèle de classification supervisée (9 nov 2019)
 
-    
-    Split the data into training and test data sets.
-    Define the metrics for which model is getting optimized.
-    Get quick initial metrics estimate.
-    Feature engineering to optimize the metrics. (Skip this during first pass).
-    Data pre-processing.
-    Feature selection.
-    Model selection.
-    Model validation.
-    Interpret the results.
-    Get the best model and check it against test data set.
+Présentation du projet : https://docs.google.com/presentation/d/1fm9FBL9gl2IPELQJmJKF93rfN8c2GlXkBKAc_3tXVnE/edit?usp=sharing 
 
+###Intro
 
-Intro
+Le dataset sur lequel j'ai travaillé provient du UCI Machine Learning Repository. (lien plus bas)
 
-Le dataset sur lequel j'ai travaillé provient du UCI Machine Learning Repository. Les données du set proviennent du recensement de 1994. L’objectif sera ici de prédire si le revenu d’un individu est de plus 50K$ ou pas (grâce à la variable « Income »). 
+Les données du set proviennent du recensement de 1994. L’objectif sera ici de <b>prédire si le revenu d’un individu est de plus 50K$ ou pas</b> (grâce à la variable « Income »). 
 Comme il n'y a que 2 résultats possible, la méthode de ML sera celle de classification : régression logistic, SVM, forest tree etc…
 
 On pourra tester plusieurs de ces modèles pour déterminer le plus efficace.
 
-Data cleansing and wrangling.
 
-1) LA première étape est d’analyser les données et de les nettoyer
-la dataset contient  32561 lignes et 15 colonnes qui pour la suite pourraient se diviser ainsi : 
+#### Note sur les données : 
+
+Le dataset contient  32561 lignes et 15 colonnes qui pour la suite pourraient se diviser ainsi : 
     - 14 sont les features 
     - 1 la target. 
 6 variables sont numériques, les 9 autres sont catégorielles.
@@ -39,45 +32,13 @@ Pour la suite du travail, on pourra supprimer la variable « education » puis
 Pour ce qui est de la variable « Country », on compte 42 entrées : 41 pays, et 1 de type NC (« ? »).
 on pourra pour cette colonne par exemple créer une nouvelle variable qui regrouperait les pays pas continents dès lors que ce n’est pas les USA qui représentent 89,5% des répondants. Pour les lignes NC, je vais les supprimer. ça fera 583 lignes en moins sur 32561. On travaillera donc avec 31978 lignes.
 
-Pour la variable "fnlwgt", il y a 21648 valeurs différentes. Difficile d'y voir une utilité. Je vais donc supprimer cette colonne.
-
 Pour les autres variables, je n'ai rien vu de particulier. Mis à part qu'il faudra vérifier s'il n'y a pas de valeurs manquantes.
 
-
-
 ------
-Source : https://archive.ics.uci.edu/ml/datasets/census+income
+#### Source : https://archive.ics.uci.edu/ml/datasets/census+income
+                                                                                            
 
-Adult Data Set
-
-Abstract: Predict whether income exceeds $50K/yr based on census data. Also known as "Census Income" dataset.
-
-Data Set Characteristics:  Multivariate
-
-Number of Instances: 48842
-
-Area: Social
-
-Attribute Characteristics: Categorical, Integer
-
-Number of Attributes: 14
-
-Date Donated:1996-05-01
-
-Associated Tasks: Classification
-
-Missing Values? Yes
-
-Number of Web Hits: 1617063
-
-Source:Donor:
-
-Ronny Kohavi and Barry Becker
-Data Mining and Visualization
-Silicon Graphics.
-e-mail: ronnyk '@' live.com for questions.
-
-Data Set Information:
+<b>Data Set Information</b>
 
 Extraction was done by Barry Becker from the 1994 Census database. A set of reasonably clean records was extracted using the following conditions: ((AAGE>16) && (AGI>100) && (AFNLWGT>1)&& (HRSWK>0))
 
