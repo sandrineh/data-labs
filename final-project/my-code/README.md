@@ -7,7 +7,7 @@
 ## Overview
 
 Sélection et apprentissage supervisé d'un modèle prédiction - XGBOOST - afin de déterminer le nombre de likes des publications sur Instagram. Et plus particulièrement pour deux acteurs du secteur du livre : les éditeurs et libraires.
-![Editeurs_libraires_instagram](/images/edi_lib_insta.png")
+![Editeurs_libraires_instagram](images/edi_lib_insta.png)
 
 * Technologies and tools :
 	* Python
@@ -62,7 +62,7 @@ Overview the general steps you will go through to analyze your data in order to 
 	* Try advanced techniques and see if they improve the result.
 
 ## Conclusion
-![WebApp_Prediction_instagram](/images/le_test_ultime.png")
+![WebApp_Prediction_instagram](images/le_test_ultime.png)
 
 * Summarize your data analysis result.
 * State your conclusion of your hypothesis testing.
